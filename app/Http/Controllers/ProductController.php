@@ -52,7 +52,7 @@ class ProductController extends Controller
             function () use ($request) {
                 $this->productService->create(ProductDTO::fromArray($request->validated()));
 
-                return redirect()->route('product.index')->with('message', 'Product created successfully!');
+                return redirect()->route('product.index')->with('message', 'Продукт добавлен!');
             },
             fn(Throwable $e) => redirect()->back()->with('error', $e->getMessage())
         );
@@ -82,7 +82,7 @@ class ProductController extends Controller
             function () use ($product, $request) {
                 $this->productService->update($product, ProductDTO::fromArray($request->validated()));
 
-                return redirect()->route('product.index')->with('message', 'Product updated successfully!');
+                return redirect()->route('product.index')->with('message', 'Продукт обвновлён!');
             },
             fn(Throwable $e) => redirect()->back()->with('error', $e->getMessage())
         );
@@ -98,7 +98,7 @@ class ProductController extends Controller
             function () use ($product) {
                 $this->productService->delete($product);
 
-                return redirect()->route('product.index')->with('message', 'Product deleted successfully!');
+                return redirect()->route('product.index')->with('message', 'Продукт удалён!');
             },
             fn(Throwable $e) => redirect()->back()->with('error', $e->getMessage())
         );

@@ -53,7 +53,7 @@ class OrderController extends Controller
             function () use ($request) {
                 $this->orderService->create(OrderDTO::fromArray($request->validated()));
 
-                return redirect()->route('order.index')->with('message', 'Order created successfully!');
+                return redirect()->route('order.index')->with('message', 'Заказ создан!');
             },
             fn(Throwable $e) => redirect()->back()->with('error', $e->getMessage())
         );
@@ -83,7 +83,7 @@ class OrderController extends Controller
             function () use ($order, $request) {
                 $this->orderService->update($order, OrderDTO::fromArray($request->validated()));
 
-                return redirect()->route('order.index')->with('message', 'Order updated successfully!');
+                return redirect()->route('order.index')->with('message', 'Заказ обновлён!');
             },
             fn(Throwable $e) => redirect()->back()->with('error', $e->getMessage())
         );
@@ -99,7 +99,7 @@ class OrderController extends Controller
             function () use ($order) {
                 $this->orderService->delete($order);
 
-                return redirect()->route('order.index')->with('message', 'Order deleted successfully!');
+                return redirect()->route('order.index')->with('message', 'Заказ удалён!');
             },
             fn(Throwable $e) => redirect()->back()->with('error', $e->getMessage())
         );
@@ -117,7 +117,7 @@ class OrderController extends Controller
             function () use ($order, $request) {
                 $this->orderService->complete($order);
 
-                return redirect()->route('order.index')->with('message', 'Order completed successfully!');
+                return redirect()->route('order.index')->with('message', 'Заказ завершён!');
             },
             fn(Throwable $e) => redirect()->back()->with('error', $e->getMessage())
         );
